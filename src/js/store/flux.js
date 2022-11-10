@@ -1,21 +1,29 @@
 const getState = ({ getStore, getActions, setStore }) => {
+
+
+
   function getFetch() {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/usertest197", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/steven12", { // Fetch from API on a server
+      method: "GET", // Pick a method for request (Can be PUT POST DELETE GET)
+      headers: { // Headen part of the request have to have content type header
+        "Content-Type": "application/json", 
       },
     })
-      .then((resp) => {
-        console.log(resp.ok);
-        console.log(resp.status);
-        return resp.json();
+      .then((resp) => { // Wait for response once there is response
+        //console.log(resp)
+        //console.log(resp.ok); // console log atribute ok of the response 
+        //console.log(resp.status); // console log atribute status of the response
+        //console.log('FIRST PART IS DONE')
+        return resp.json(); // return respons as JSON file
       })
-      .then((data) => {
-        const tasks = data.map((item, index) => {
-          return item.label;
+      .then((data) => { //take response
+        //console.log('DATA: ')
+        //console.log(data)
+        const tasks = data.map((item, index) => { //map throught it
+          return item.label; //and return labels
+
         });
-        setStore({ fetchTasks: [...tasks] });
+        setStore({ fetchTasks: [...tasks] }); // filling fetchTasks array in the store with result of map above
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +51,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
-      loadSomeData: () => {
+      loadSomeData: () => { 
+        // FETCH DATA
+
         getFetch()
         /**
 					  fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -71,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         setStore({ list: [...store.list, appendList] });
 
-        fetch("https://assets.breatheco.de/apis/fake/todos/user/usertest197", {
+        fetch("https://assets.breatheco.de/apis/fake/todos/user/steven12", {
           method: "PUT",
           body: JSON.stringify(store.list),
           headers: {

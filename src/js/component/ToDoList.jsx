@@ -7,7 +7,7 @@ import Inputs from "./Inputs.jsx";
 export const ToDoList = () => {
   function createPost() {
     //Create server page of name usertest197
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/usertest197", {
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/steven12", {
       method: "POST",
       body: JSON.stringify({}),
       headers: {
@@ -20,6 +20,7 @@ export const ToDoList = () => {
         return resp.json();
       })
       .then((data) => {
+        console.log('DATA:')
         console.log(data);
       })
       .catch((error) => {
@@ -30,7 +31,7 @@ export const ToDoList = () => {
 
   //Delete server page and all tasks
   function clearFetch() {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/usertest197", {
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/steven12", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
